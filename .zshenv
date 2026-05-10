@@ -1,10 +1,6 @@
 # .zshenv
 # alexforsale <alexforsale@yahoo.com>
 
-if [ -f "$HOME/.cargo/env" ]; then
-    . "$HOME/.cargo/env"
-fi
-
 export ZSHCONF="$HOME/.config/zsh"
 
 if [ ! -d "$ZSHCONF" ]; then
@@ -18,3 +14,6 @@ fi
 for envs in $ZSHCONF/zshenv.d/*.zsh; do
     . "$envs"
 done
+
+typeset -U path
+export PATH

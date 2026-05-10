@@ -147,10 +147,6 @@ compinit -i
 # .zshenv
 # alexforsale <alexforsale@yahoo.com>
 
-if [ -f "$HOME/.cargo/env" ]; then
-    . "$HOME/.cargo/env"
-fi
-
 export ZSHCONF="$HOME/.config/zsh"
 
 if [ ! -d "$ZSHCONF" ]; then
@@ -164,6 +160,9 @@ fi
 for envs in $ZSHCONF/zshenv.d/*.zsh; do
     . "$envs"
 done
+
+typeset -U path
+export PATH
 #+end_src
 ** .zlogin
 :PROPERTIES:
@@ -196,7 +195,7 @@ fi
 :END:
 
 #+begin_src shell
-# .config/zsh/zshenv.d/00-editors.zsh
+# .config/zsh/zshenv.d/00-base.zsh
 # alexforsale <alexforsale@yahoo.com>
 
 # You may need to manually set your language environment
@@ -264,6 +263,19 @@ export TERM=xterm-256color
 if [ -d "$HOME/.cabal/bin" ];then
     path+=("$HOME/.cabal/bin")
     typeset -U path
+fi
+#+end_src
+*** 10-cargo.zsh
+:PROPERTIES:
+:header-args: :tangle .config/zsh/zshenv.d/10-cargo.zsh :mkdirp t
+:END:
+
+#+begin_src shell
+# .config/zsh/zshenv.d/10-cargo.zsh
+# alexforsale <alexforsale@yahoo.com>
+
+if [ -f "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
 fi
 #+end_src
 *** 10-composer.zsh

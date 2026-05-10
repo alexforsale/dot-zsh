@@ -1,4 +1,4 @@
-# .config/zsh/zshenv.d/00-editors.zsh
+# .config/zsh/zshenv.d/00-base.zsh
 # alexforsale <alexforsale@yahoo.com>
 
 # You may need to manually set your language environment
