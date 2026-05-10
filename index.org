@@ -93,11 +93,6 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-export LANG=en_US.UTF-8
-
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -195,6 +190,19 @@ if [ "$SHLVL" = 1 ]; then
 fi
 #+end_src
 ** .config/zsh/zshenv.d
+*** 00-base.zsh
+:PROPERTIES:
+:header-args: :tangle .config/zsh/zshenv.d/00-base.zsh :mkdirp t
+:END:
+
+#+begin_src shell
+# .config/zsh/zshenv.d/00-editors.zsh
+# alexforsale <alexforsale@yahoo.com>
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+#+end_src
 *** 00-editors.zsh
 :PROPERTIES:
 :header-args: :tangle .config/zsh/zshenv.d/00-editors.zsh :mkdirp t
