@@ -15,5 +15,5 @@ for envs in $ZSHCONF/zshenv.d/*.zsh; do
     . "$envs"
 done
 
-typeset -U path
+typeset -U path PATH
 export PATH
