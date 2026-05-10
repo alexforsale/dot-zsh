@@ -15,6 +15,6 @@ if [ ! -d "$ZSHCONF/zshenv.d" ]; then
     mkdir -p "$ZSHCONF/zshenv.d"
 fi
 
-for envs in "$ZSHCONF/zshenv.d/*.zsh"; do
+for envs in $ZSHCONF/zshenv.d/*.zsh; do
     . "$envs"
 done
