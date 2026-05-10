@@ -1,0 +1,219 @@
+#+options: ':t *:t -:t ::t <:t H:3 \n:nil ^:t arch:headline author:t
+#+options: broken-links:nil c:nil creator:nil d:(not "LOGBOOK") date:t e:t
+#+options: email:nil expand-links:t f:t inline:t num:t p:nil pri:nil prop:nil
+#+options: stat:t tags:t tasks:t tex:t timestamp:t title:t toc:t todo:t |:t
+#+title: ZSH initialization file
+#+date: <2026-05-10 Sun>
+#+author: Kristian Alexander P
+#+email: alexforsale@yahoo.com
+#+language: en
+#+select_tags: export
+#+exclude_tags: noexport
+#+creator: Emacs 30.2 (Org mode 9.8.4)
+#+cite_export:
+#+setupfile: https://fniessen.github.io/org-html-themes/org/html-theme-readtheorg.setup
+#+export_file_name: index.html
+* Initialization files
+** .zshrc
+:PROPERTIES:
+:header-args: :tangle .zshrc
+:END:
+
+#+begin_src shell
+# .zshrc
+# for use with oh-my-zsh https://ohmyz.sh/
+# alexforsale <alexforsale@yahoo.com>
+export ZSH="$HOME/.oh-my-zsh"
+
+# auto install oh-my-zsh
+if [ ! -d "$ZSH" ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+fi
+
+ZSH_THEME="robbyrussell"
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git pass zoxide fzf)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='nvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch $(uname -m)"
+
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+if [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]]; then
+	source /usr/share/doc/pkgfile/command-not-found.zsh
+fi
+
+if [[ -f /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
+	source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+
+if [[ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-hightlighting.zsh ]]; then
+	source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-hightlighting.zsh
+fi
+
+if [[ $(command -v zoxide) ]]; then
+	eval "$(zoxide init zsh --cmd cd)"
+fi
+
+if [[ $(command -v nvim) ]]; then
+  alias vim="nvim"
+  alias vi="nvim"
+fi
+
+path+=($HOME/.cabal/bin $HOME/.local/bin)
+
+typeset -U path
+
+export TERM=xterm-256color
+
+autoload -U compinit
+compinit -i
+#+end_src
+** .zshenv
+:PROPERTIES:
+:header-args: :tangle .zshenv
+:END:
+
+#+begin_src shell
+# .zshenv
+# alexforsale <alexforsale@yahoo.com>
+
+if [ -f "$HOME/.cargo/env" ]; then
+    . "$HOME/.cargo/env"
+fi
+
+export ZSHCONF="$HOME/.config/zsh"
+
+if [ ! -d "$ZSHCONF" ]; then
+    mkdir -p "$ZSHCONF"
+fi
+
+if [ ! -d "$ZSHCONF/zshenv.d" ]; then
+    mkdir -p "$ZSHCONF/zshenv.d"
+fi
+
+for envs in "$ZSHCONF/zshenv.d/*.zsh"; do
+    . "$envs"
+done
+#+end_src
+** .zlogin
+:PROPERTIES:
+:header-args: :tangle .zlogin
+:END:
+
+#+begin_src shell
+# .zlogin
+# alexforsale <alexforsale@yahoo.com>
+
+last "${USER}" | head -n 3
+#+end_src
+** .zlogout
+:PROPERTIES:
+:header-args: :tangle .zlogout
+:END:
+
+#+begin_src shell
+# .zlogout
+# alexforsale <alexforsale@yahoo.com>
+
+if [ "$SHLVL" = 1 ]; then
+    [ -x /usr/bin/clear ] && /usr/bin/clear
+fi
+#+end_src
+** .config/zsh/zshenv.d
+*** 00-editors.zsh
+:PROPERTIES:
+:header-args: :tangle .config/zsh/zshenv.d/00-editors.zsh :mkdirp t
+:END:
+
+#+begin_src shell
+# .config/zsh/zshenv.d/00-editors.zsh
+# $EDITOR, $VISUAL and $ALTERNATE_EDITOR
+# alexforsale <alexforsale@yahoo.com>
+
+if [ "$(command -v emacs)" ] && [ -z "$EDITOR" ]; then
+    export EDITOR="emacsclient -t -a emacs"
+    export VISUAL="emacsclient -c -a emacs"
+    export ALTERNATE_EDITOR="$VISUAL"
+fi
+#+end_src
