@@ -140,12 +140,6 @@ if [[ $(command -v nvim) ]]; then
   alias vi="nvim"
 fi
 
-path+=($HOME/.cabal/bin $HOME/.local/bin)
-
-typeset -U path
-
-export TERM=xterm-256color
-
 autoload -U compinit
 compinit -i
 #+end_src
@@ -215,5 +209,139 @@ if [ "$(command -v emacs)" ] && [ -z "$EDITOR" ]; then
     export EDITOR="emacsclient -t -a emacs"
     export VISUAL="emacsclient -c -a emacs"
     export ALTERNATE_EDITOR="$VISUAL"
+fi
+#+end_src
+*** 00-security.zsh
+:PROPERTIES:
+:header-args: :tangle .config/zsh/zshenv.d/00-security.zsh :mkdirp t
+:END:
+
+#+begin_src shell
+# .config/zsh/zshenv.d/00-security.zsh
+# alexforsale <alexforsale@yahoo.com>
+
+# from https://www.gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html
+export GPG_TTY="$(tty)"
+#+end_src
+*** 10-local-bin.zsh
+:PROPERTIES:
+:header-args: :tangle .config/zsh/zshenv.d/10-local-bin.zsh :mkdirp t
+:END:
+
+#+begin_src shell
+# .config/zsh/zshenv.d/10-local-bin.zsh
+# alexforsale <alexforsale@yahoo.com>
+
+if [ -d "$HOME/.local/bin" ]; then
+    path+=("$HOME/.local/bin")
+    typeset -U path
+fi
+#+end_src
+*** 10-term.zsh
+:PROPERTIES:
+:header-args: :tangle .config/zsh/zshenv.d/10-term.zsh :mkdirp t
+:END:
+
+#+begin_src shell
+export TERM=xterm-256color
+#+end_src
+*** 10-cabal.zsh
+:PROPERTIES:
+:header-args: :tangle .config/zsh/zshenv.d/10-cabal.zsh :mkdirp t
+:END:
+
+#+begin_src shell
+# .config/zsh/zshenv.d/10-cabal.zsh
+# alexforsale <alexforsale@yahoo.com>
+if [ -d "$HOME/.cabal/bin" ];then
+    path+=("$HOME/.cabal/bin")
+    typeset -U path
+fi
+#+end_src
+*** 10-composer.zsh
+:PROPERTIES:
+:header-args: :tangle .config/zsh/zshenv.d/10-composer.zsh :mkdirp t
+:END:
+
+#+begin_src shell
+# .config/zsh/zshenv.d/10-composer.zsh
+# alexforsale <alexforsale@yahoo.com>
+
+if [ -d "$HOME/.config/composer/vendor/bin" ]; then
+    path+=("$HOME/.config/composer/vendor/bin")
+    typeset -U path
+fi
+#+end_src
+*** 10-fsharp.zsh
+:PROPERTIES:
+:header-args: :tangle .config/zsh/zshenv.d/10-fsharp.zsh :mkdirp t
+:END:
+
+#+begin_src shell
+# .config/zsh/zshenv.d/10-fsharp.zsh
+# alexforsale <alexforsale@yahoo.com>
+
+if [ -d "$HOME/.dotnet/tools" ]; then
+    path+=("$HOME/.dotnet/tools")
+    typeset -U path
+fi
+#+end_src
+*** 10-go.zsh
+:PROPERTIES:
+:header-args: :tangle .config/zsh/zshenv.d/10-go.zsh :mkdirp t
+:END:
+
+#+begin_src shell
+# .config/zsh/zshenv.d/10-go.zsh
+# alexforsale <alexforsale@yahoo.com>
+
+if [ "$(command -v go)" ]; then
+    # set GOPATH to ~/.local so we don't need
+    # to add more PATH
+    export GOPATH="$HOME/.local"
+fi
+#+end_src
+*** 10-npm.zsh
+:PROPERTIES:
+:header-args: :tangle .config/zsh/zshenv.d/10-npm.zsh :mkdirp t
+:END:
+
+#+begin_src shell
+# .config/zsh/zshenv.d/10-npm.zsh
+# see https://wiki.archlinux.org/index.php/Node.js
+# alexforsale <alexforsale@yahoo.com>
+
+if [ -d "${HOME}/.config/nvm" ]; then
+    export NVM_DIR="${HOME}/.config/nvm"
+elif [ "$(command -v npm)" ] && [ ! "$(command -v nvm)" ]; then
+    export npm_config_prefix="$HOME/.local"
+fi
+#+end_src
+*** 10-python.zsh
+:PROPERTIES:
+:header-args: :tangle .config/zsh/zshenv.d/10-python.zsh :mkdirp t
+:END:
+
+#+begin_src shell
+# .config/zsh/zshenv.d/10-python.zsh
+# alexforsale <alexforsale@yahoo.com>
+if [ $(command -v pipenv) ]; then
+    [ -z "${PIPENV_VENV_IN_PROJECT}" ] &&
+        export PIPENV_VENV_IN_PROJECT=1
+fi
+#+end_src
+*** 10-ruby.zsh
+:PROPERTIES:
+:header-args: :tangle .config/zsh/zshenv.d/10-ruby.zsh :mkdirp t
+:END:
+
+#+begin_src shell
+# .config/zsh/zshenv.d/10-ruby.zsh
+# alexforsale <alexforsale@yahoo.com>
+
+if [ "$(command -v ruby)" ] &&
+       [ -d "$(ruby -e 'print Gem.user_dir')/bin" ]; then
+    path+=("$(ruby -e 'print Gem.user_dir')/bin")
+    typeset -U path
 fi
 #+end_src

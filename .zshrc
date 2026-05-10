@@ -118,11 +118,5 @@ if [[ $(command -v nvim) ]]; then
   alias vi="nvim"
 fi
 
-path+=($HOME/.cabal/bin $HOME/.local/bin)
-
-typeset -U path
-
-export TERM=xterm-256color
-
 autoload -U compinit
 compinit -i
