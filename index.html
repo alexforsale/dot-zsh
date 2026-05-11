@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-11 Mon 01:46 -->
+<!-- 2026-05-11 Mon 12:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ZSH initialization file</title>
@@ -27,43 +27,77 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orge205796">1. Initialization files</a>
+<li><a href="#orge2f55fd">Initialization files</a>
 <ul>
-<li><a href="#orgb548de9">1.1. .zshrc</a>
+<li><a href="#orgce7cd22">.zshrc</a>
 <ul>
-<li><a href="#org035c995">1.1.1. oh-my-zsh specific</a></li>
-<li><a href="#org3208b67">1.1.2. User configuration</a></li>
+<li><a href="#org418f48d">oh-my-zsh specific</a>
+<ul>
+<li><a href="#orge273a7b">Auto install oh-my-zsh</a></li>
+<li><a href="#org47f1b3d">Theme</a></li>
+<li><a href="#org2ca0a07">Other options</a></li>
 </ul>
 </li>
-<li><a href="#org11ad9c0">1.2. .zshenv</a>
+<li><a href="#orgcae614b">User configuration</a>
 <ul>
-<li><a href="#org528adce">1.2.1. .config/zsh/zshenv.d</a></li>
+<li><a href="#orgf80d614">External packages</a></li>
+<li><a href="#org46f787f">zoxide</a></li>
+<li><a href="#org7eb536b">aliases</a></li>
+<li><a href="#orga076191">completion</a></li>
 </ul>
 </li>
-<li><a href="#org917b570">1.3. .zprofile</a>
-<ul>
-<li><a href="#org4fb47f5">1.3.1. .config/zsh/zprofile.d</a></li>
 </ul>
 </li>
-<li><a href="#orgd4b98b4">1.4. .zlogin</a></li>
-<li><a href="#org0a496a6">1.5. .zlogout</a></li>
+<li><a href="#org55b8f14">.zshenv</a>
+<ul>
+<li><a href="#org6864278">.config/zsh/zshenv.d</a>
+<ul>
+<li><a href="#org8f9eba3">00-base.zsh</a></li>
+<li><a href="#org9a9fbcf">00-editors.zsh</a></li>
+<li><a href="#org1e07c60">00-security.zsh</a></li>
+<li><a href="#org050ed35">10-local-bin.zsh</a></li>
+<li><a href="#org9791cb9">10-term.zsh</a></li>
+<li><a href="#org2550d73">10-cabal.zsh</a></li>
+<li><a href="#org6f447dc">10-cargo.zsh</a></li>
+<li><a href="#orgae92848">10-composer.zsh</a></li>
+<li><a href="#orgec497dd">10-fsharp.zsh</a></li>
+<li><a href="#org6327c5b">10-go.zsh</a></li>
+<li><a href="#orgc111c5b">10-npm.zsh</a></li>
+<li><a href="#orgdd4f5e1">10-python.zsh</a></li>
+<li><a href="#org8798f32">10-ruby.zsh</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#orgfdff4ee">.zprofile</a>
+<ul>
+<li><a href="#orgd251c2f">.config/zsh/zprofile.d</a>
+<ul>
+<li><a href="#orgabca99d">00-xdg-user-directories.zsh</a></li>
+<li><a href="#org37e365d">90-python.zsh</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org8796250">.zlogin</a></li>
+<li><a href="#org8182130">.zlogout</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orge205796" class="outline-2">
-<h2 id="orge205796"><span class="section-number-2">1.</span> Initialization files</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orge2f55fd" class="outline-2">
+<h2 id="orge2f55fd">Initialization files</h2>
+<div class="outline-text-2" id="text-orge2f55fd">
 </div>
-<div id="outline-container-orgb548de9" class="outline-3">
-<h3 id="orgb548de9"><span class="section-number-3">1.1.</span> .zshrc</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orgce7cd22" class="outline-3">
+<h3 id="orgce7cd22">.zshrc</h3>
+<div class="outline-text-3" id="text-orgce7cd22">
 </div>
 
-<div id="outline-container-org035c995" class="outline-4">
-<h4 id="org035c995"><span class="section-number-4">1.1.1.</span> oh-my-zsh specific</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-org418f48d" class="outline-4">
+<h4 id="org418f48d">oh-my-zsh specific</h4>
+<div class="outline-text-4" id="text-org418f48d">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.zshrc
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">for use with oh-my-zsh https://ohmyz.sh/
@@ -73,9 +107,9 @@
 </div>
 </div>
 
-<ol class="org-ol">
-<li><a id="org725734a"></a>Auto install oh-my-zsh<br />
-<div class="outline-text-5" id="text-1-1-1-1">
+<div id="outline-container-orge273a7b" class="outline-5">
+<h5 id="orge273a7b">Auto install oh-my-zsh</h5>
+<div class="outline-text-5" id="text-orge273a7b">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">auto install oh-my-zsh
 </span><span style="color: #4169e1;">if</span> [ ! -d <span style="color: #bc8f8f;">"$ZSH"</span> ]; <span style="color: #4169e1;">then</span>
@@ -84,18 +118,20 @@
 </pre>
 </div>
 </div>
-</li>
-<li><a id="orgf3862fa"></a>Theme<br />
-<div class="outline-text-5" id="text-1-1-1-2">
+</div>
+<div id="outline-container-org47f1b3d" class="outline-5">
+<h5 id="org47f1b3d">Theme</h5>
+<div class="outline-text-5" id="text-org47f1b3d">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b8860b;">ZSH_THEME</span>=<span style="color: #bc8f8f;">"robbyrussell"</span>
 <span style="color: #b22222;"># </span><span style="color: #b22222;">ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )</span>
 </pre>
 </div>
 </div>
-</li>
-<li><a id="org4d0d286"></a>Other options<br />
-<div class="outline-text-5" id="text-1-1-1-3">
+</div>
+<div id="outline-container-org2ca0a07" class="outline-5">
+<h5 id="org2ca0a07">Other options</h5>
+<div class="outline-text-5" id="text-org2ca0a07">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">Uncomment the following line to use case-sensitive completion.
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">CASE_SENSITIVE="true"
@@ -157,12 +193,11 @@
 </pre>
 </div>
 </div>
-</li>
-</ol>
 </div>
-<div id="outline-container-org3208b67" class="outline-4">
-<h4 id="org3208b67"><span class="section-number-4">1.1.2.</span> User configuration</h4>
-<div class="outline-text-4" id="text-1-1-2">
+</div>
+<div id="outline-container-orgcae614b" class="outline-4">
+<h4 id="orgcae614b">User configuration</h4>
+<div class="outline-text-4" id="text-orgcae614b">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">User configuration
 </span>
@@ -190,9 +225,9 @@
 </pre>
 </div>
 </div>
-<ol class="org-ol">
-<li><a id="orge693888"></a>External packages<br />
-<div class="outline-text-5" id="text-1-1-2-1">
+<div id="outline-container-orgf80d614" class="outline-5">
+<h5 id="orgf80d614">External packages</h5>
+<div class="outline-text-5" id="text-orgf80d614">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #4169e1;">if</span> [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]]; <span style="color: #4169e1;">then</span>
         <span style="color: #00008b;">source</span> /usr/share/doc/pkgfile/command-not-found.zsh
@@ -208,9 +243,10 @@
 </pre>
 </div>
 </div>
-</li>
-<li><a id="orgce681a0"></a>zoxide<br />
-<div class="outline-text-5" id="text-1-1-2-2">
+</div>
+<div id="outline-container-org46f787f" class="outline-5">
+<h5 id="org46f787f">zoxide</h5>
+<div class="outline-text-5" id="text-org46f787f">
 <p>
 <a href="https://github.com/ajeetdsouza/zoxide">zoxide</a> is a smarter cd command, similar to <code>z</code> or <code>autojump</code>.
 </p>
@@ -221,11 +257,12 @@
 </pre>
 </div>
 </div>
-</li>
-<li><a id="org48f01bb"></a>aliases<br />
-<div class="outline-text-5" id="text-1-1-2-3">
+</div>
+<div id="outline-container-org7eb536b" class="outline-5">
+<h5 id="org7eb536b">aliases</h5>
+<div class="outline-text-5" id="text-org7eb536b">
 <p>
-I don&rsquo;t use aliases that much.
+I don't use aliases that much.
 </p>
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #4169e1;">if</span> [[ $(<span style="font-weight: bold;">command -v nvim</span>) ]]; <span style="color: #4169e1;">then</span>
@@ -235,9 +272,10 @@ I don&rsquo;t use aliases that much.
 </pre>
 </div>
 </div>
-</li>
-<li><a id="org9b14a75"></a>completion<br />
-<div class="outline-text-5" id="text-1-1-2-4">
+</div>
+<div id="outline-container-orga076191" class="outline-5">
+<h5 id="orga076191">completion</h5>
+<div class="outline-text-5" id="text-orga076191">
 <div class="org-src-container">
 <pre class="src src-shell">zstyle <span style="color: #bc8f8f;">':completion:*'</span> rehash true
 autoload -U compinit
@@ -245,13 +283,12 @@ compinit -i
 </pre>
 </div>
 </div>
-</li>
-</ol>
 </div>
 </div>
-<div id="outline-container-org11ad9c0" class="outline-3">
-<h3 id="org11ad9c0"><span class="section-number-3">1.2.</span> .zshenv</h3>
-<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-org55b8f14" class="outline-3">
+<h3 id="org55b8f14">.zshenv</h3>
+<div class="outline-text-3" id="text-org55b8f14">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.zshenv
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alexforsale <a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -275,13 +312,13 @@ compinit -i
 </pre>
 </div>
 </div>
-<div id="outline-container-org528adce" class="outline-4">
-<h4 id="org528adce"><span class="section-number-4">1.2.1.</span> .config/zsh/zshenv.d</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-org6864278" class="outline-4">
+<h4 id="org6864278">.config/zsh/zshenv.d</h4>
+<div class="outline-text-4" id="text-org6864278">
 </div>
-<ol class="org-ol">
-<li><a id="org499617e"></a>00-base.zsh<br />
-<div class="outline-text-5" id="text-1-2-1-1">
+<div id="outline-container-org8f9eba3" class="outline-5">
+<h5 id="org8f9eba3">00-base.zsh</h5>
+<div class="outline-text-5" id="text-org8f9eba3">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.config/zsh/zshenv.d/00-base.zsh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alexforsale <a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -293,9 +330,10 @@ compinit -i
 </pre>
 </div>
 </div>
-</li>
-<li><a id="org1ef7bd1"></a>00-editors.zsh<br />
-<div class="outline-text-5" id="text-1-2-1-2">
+</div>
+<div id="outline-container-org9a9fbcf" class="outline-5">
+<h5 id="org9a9fbcf">00-editors.zsh</h5>
+<div class="outline-text-5" id="text-org9a9fbcf">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.config/zsh/zshenv.d/00-editors.zsh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">$EDITOR, $VISUAL and $ALTERNATE_EDITOR
@@ -309,9 +347,10 @@ compinit -i
 </pre>
 </div>
 </div>
-</li>
-<li><a id="orgabdef6e"></a>00-security.zsh<br />
-<div class="outline-text-5" id="text-1-2-1-3">
+</div>
+<div id="outline-container-org1e07c60" class="outline-5">
+<h5 id="org1e07c60">00-security.zsh</h5>
+<div class="outline-text-5" id="text-org1e07c60">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.config/zsh/zshenv.d/00-security.zsh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alexforsale <a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -321,9 +360,10 @@ compinit -i
 </pre>
 </div>
 </div>
-</li>
-<li><a id="org96135eb"></a>10-local-bin.zsh<br />
-<div class="outline-text-5" id="text-1-2-1-4">
+</div>
+<div id="outline-container-org050ed35" class="outline-5">
+<h5 id="org050ed35">10-local-bin.zsh</h5>
+<div class="outline-text-5" id="text-org050ed35">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.config/zsh/zshenv.d/10-local-bin.zsh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alexforsale <a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -335,17 +375,19 @@ compinit -i
 </pre>
 </div>
 </div>
-</li>
-<li><a id="orgd101cde"></a>10-term.zsh<br />
-<div class="outline-text-5" id="text-1-2-1-5">
+</div>
+<div id="outline-container-org9791cb9" class="outline-5">
+<h5 id="org9791cb9">10-term.zsh</h5>
+<div class="outline-text-5" id="text-org9791cb9">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #00008b;">export</span> <span style="color: #b8860b;">TERM</span>=xterm-256color
 </pre>
 </div>
 </div>
-</li>
-<li><a id="orgf93cd4a"></a>10-cabal.zsh<br />
-<div class="outline-text-5" id="text-1-2-1-6">
+</div>
+<div id="outline-container-org2550d73" class="outline-5">
+<h5 id="org2550d73">10-cabal.zsh</h5>
+<div class="outline-text-5" id="text-org2550d73">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.config/zsh/zshenv.d/10-cabal.zsh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alexforsale <a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -356,9 +398,10 @@ compinit -i
 </pre>
 </div>
 </div>
-</li>
-<li><a id="org4c4703e"></a>10-cargo.zsh<br />
-<div class="outline-text-5" id="text-1-2-1-7">
+</div>
+<div id="outline-container-org6f447dc" class="outline-5">
+<h5 id="org6f447dc">10-cargo.zsh</h5>
+<div class="outline-text-5" id="text-org6f447dc">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.config/zsh/zshenv.d/10-cargo.zsh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alexforsale <a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -369,9 +412,10 @@ compinit -i
 </pre>
 </div>
 </div>
-</li>
-<li><a id="org9b2a68b"></a>10-composer.zsh<br />
-<div class="outline-text-5" id="text-1-2-1-8">
+</div>
+<div id="outline-container-orgae92848" class="outline-5">
+<h5 id="orgae92848">10-composer.zsh</h5>
+<div class="outline-text-5" id="text-orgae92848">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.config/zsh/zshenv.d/10-composer.zsh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alexforsale <a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -383,9 +427,10 @@ compinit -i
 </pre>
 </div>
 </div>
-</li>
-<li><a id="orgab2dd1f"></a>10-fsharp.zsh<br />
-<div class="outline-text-5" id="text-1-2-1-9">
+</div>
+<div id="outline-container-orgec497dd" class="outline-5">
+<h5 id="orgec497dd">10-fsharp.zsh</h5>
+<div class="outline-text-5" id="text-orgec497dd">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.config/zsh/zshenv.d/10-fsharp.zsh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alexforsale <a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -397,9 +442,10 @@ compinit -i
 </pre>
 </div>
 </div>
-</li>
-<li><a id="org69de45c"></a>10-go.zsh<br />
-<div class="outline-text-5" id="text-1-2-1-10">
+</div>
+<div id="outline-container-org6327c5b" class="outline-5">
+<h5 id="org6327c5b">10-go.zsh</h5>
+<div class="outline-text-5" id="text-org6327c5b">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.config/zsh/zshenv.d/10-go.zsh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alexforsale <a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -412,9 +458,10 @@ compinit -i
 </pre>
 </div>
 </div>
-</li>
-<li><a id="org0102d75"></a>10-npm.zsh<br />
-<div class="outline-text-5" id="text-1-2-1-11">
+</div>
+<div id="outline-container-orgc111c5b" class="outline-5">
+<h5 id="orgc111c5b">10-npm.zsh</h5>
+<div class="outline-text-5" id="text-orgc111c5b">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.config/zsh/zshenv.d/10-npm.zsh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">see https://wiki.archlinux.org/index.php/Node.js
@@ -428,9 +475,10 @@ compinit -i
 </pre>
 </div>
 </div>
-</li>
-<li><a id="org553fd14"></a>10-python.zsh<br />
-<div class="outline-text-5" id="text-1-2-1-12">
+</div>
+<div id="outline-container-orgdd4f5e1" class="outline-5">
+<h5 id="orgdd4f5e1">10-python.zsh</h5>
+<div class="outline-text-5" id="text-orgdd4f5e1">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.config/zsh/zshenv.d/10-python.zsh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alexforsale <a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -441,9 +489,10 @@ compinit -i
 </pre>
 </div>
 </div>
-</li>
-<li><a id="org70069de"></a>10-ruby.zsh<br />
-<div class="outline-text-5" id="text-1-2-1-13">
+</div>
+<div id="outline-container-org8798f32" class="outline-5">
+<h5 id="org8798f32">10-ruby.zsh</h5>
+<div class="outline-text-5" id="text-org8798f32">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.config/zsh/zshenv.d/10-ruby.zsh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alexforsale <a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -456,13 +505,12 @@ compinit -i
 </pre>
 </div>
 </div>
-</li>
-</ol>
 </div>
 </div>
-<div id="outline-container-org917b570" class="outline-3">
-<h3 id="org917b570"><span class="section-number-3">1.3.</span> .zprofile</h3>
-<div class="outline-text-3" id="text-1-3">
+</div>
+<div id="outline-container-orgfdff4ee" class="outline-3">
+<h3 id="orgfdff4ee">.zprofile</h3>
+<div class="outline-text-3" id="text-orgfdff4ee">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.zprofile
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alexforsale <a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -472,13 +520,13 @@ compinit -i
 </pre>
 </div>
 </div>
-<div id="outline-container-org4fb47f5" class="outline-4">
-<h4 id="org4fb47f5"><span class="section-number-4">1.3.1.</span> .config/zsh/zprofile.d</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-orgd251c2f" class="outline-4">
+<h4 id="orgd251c2f">.config/zsh/zprofile.d</h4>
+<div class="outline-text-4" id="text-orgd251c2f">
 </div>
-<ol class="org-ol">
-<li><a id="org5a8bb96"></a>00-xdg-user-directories.zsh<br />
-<div class="outline-text-5" id="text-1-3-1-1">
+<div id="outline-container-orgabca99d" class="outline-5">
+<h5 id="orgabca99d">00-xdg-user-directories.zsh</h5>
+<div class="outline-text-5" id="text-orgabca99d">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.config/zsh/zprofile.d/00-xdg-user-directories.zsh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alexforsale <a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -489,9 +537,10 @@ compinit -i
 </pre>
 </div>
 </div>
-</li>
-<li><a id="orge4aea8f"></a>90-python.zsh<br />
-<div class="outline-text-5" id="text-1-3-1-2">
+</div>
+<div id="outline-container-org37e365d" class="outline-5">
+<h5 id="org37e365d">90-python.zsh</h5>
+<div class="outline-text-5" id="text-org37e365d">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.config/zsh/zprofile.d/90-python.zsh
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alexforsale <a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -501,13 +550,12 @@ compinit -i
 </pre>
 </div>
 </div>
-</li>
-</ol>
 </div>
 </div>
-<div id="outline-container-orgd4b98b4" class="outline-3">
-<h3 id="orgd4b98b4"><span class="section-number-3">1.4.</span> .zlogin</h3>
-<div class="outline-text-3" id="text-1-4">
+</div>
+<div id="outline-container-org8796250" class="outline-3">
+<h3 id="org8796250">.zlogin</h3>
+<div class="outline-text-3" id="text-org8796250">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.zlogin
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alexforsale <a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -518,9 +566,9 @@ compinit -i
 </div>
 </div>
 </div>
-<div id="outline-container-org0a496a6" class="outline-3">
-<h3 id="org0a496a6"><span class="section-number-3">1.5.</span> .zlogout</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-org8182130" class="outline-3">
+<h3 id="org8182130">.zlogout</h3>
+<div class="outline-text-3" id="text-org8182130">
 <div class="org-src-container">
 <pre class="src src-shell"><span style="color: #b22222;"># </span><span style="color: #b22222;">.zlogout
 </span><span style="color: #b22222;"># </span><span style="color: #b22222;">alexforsale <a href="mailto:alexforsale%40yahoo.com">&lt;alexforsale@yahoo.com&gt;</a>
@@ -537,7 +585,7 @@ compinit -i
 <div id="postamble" class="status">
 <p class="date">Date: 2026-05-10 Sun 00:00</p>
 <p class="author">Author: Kristian Alexander P</p>
-<p class="date">Created: 2026-05-11 Mon 01:46</p>
+<p class="date">Created: 2026-05-11 Mon 12:15</p>
 </div>
 </body>
 </html>
