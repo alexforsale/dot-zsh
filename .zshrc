@@ -92,6 +92,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 if [[ -f /usr/share/doc/pkgfile/command-not-found.zsh ]]; then
 	source /usr/share/doc/pkgfile/command-not-found.zsh
 fi
@@ -109,9 +110,10 @@ if [[ $(command -v zoxide) ]]; then
 fi
 
 if [[ $(command -v nvim) ]]; then
-  alias vim="nvim"
-  alias vi="nvim"
+    alias vim="nvim"
+    alias vi="nvim"
 fi
 
+zstyle ':completion:*' rehash true
 autoload -U compinit
 compinit -i
