@@ -197,8 +197,9 @@ export PATH
 # alexforsale <alexforsale@yahoo.com>
 
 # You may need to manually set your language environment
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+[ -z "$LANG" ] && export LANG=en_US.UTF-8
+[ -z "$LC_ALL" ] && export LC_ALL=en_US.UTF-8
+[ -z "$MM_CHARSET" ] && export MM_CHARSET=en_US.UTF-8
 #+end_src
 **** 00-editors.zsh
 :PROPERTIES:
@@ -361,6 +362,44 @@ if [ "$(command -v ruby)" ] &&
        [ -d "$(ruby -e 'print Gem.user_dir')/bin" ]; then
     path+=("$(ruby -e 'print Gem.user_dir')/bin")
     typeset -U path
+fi
+#+end_src
+** .zprofile
+:PROPERTIES:
+:header-args: :tangle .zprofile
+:END:
+
+#+begin_src shell
+# .zprofile
+# alexforsale <alexforsale@yahoo.com>
+for profile in $ZSHCONF/zprofile.d/*.zsh; do
+    . "$profile"
+done
+#+end_src
+*** .config/zsh/zprofile.d
+**** 00-xdg-user-directories.zsh
+:PROPERTIES:
+:header-args: :tangle .config/zsh/zprofile.d/00-xdg-user-directories.zsh :mkdirp t
+:END:
+
+#+begin_src shell
+# .config/zsh/zprofile.d/00-xdg-user-directories.zsh
+# alexforsale <alexforsale@yahoo.com>
+if [ "$(command -v xdg-user-dirs-update)" ] &&
+       [ ! -f "$HOME/.config/user-dirs.dirs" ]; then
+    xdg-user-dirs-update
+fi
+#+end_src
+**** 90-python.zsh
+:PROPERTIES:
+:header-args: :tangle .config/zsh/zprofile.d/90-python.zsh :mkdirp t
+:END:
+
+#+begin_src shell
+# .config/zsh/zprofile.d/90-python.zsh
+# alexforsale <alexforsale@yahoo.com>
+if  [ "$(command -v pyenv)" ]; then
+    eval "$(pyenv init -)"
 fi
 #+end_src
 ** .zlogin
